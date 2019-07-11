@@ -8,6 +8,7 @@
 *  即使不使用disconf也能使用框架的接口主动修改配置
 
 ``` properties
+# settings.properties
 app.title=someGame
 app.tags=["play","war"]
 app.user.hobby.lilei=fishing
@@ -47,8 +48,19 @@ app.user.hobby.HanMeimei=reading
     <context:component-scan base-package="test.spring.base"/>
 </beans>
 ```
----------------------------------------------------------------------------------------
+---------------------------------------ConfigTest_.java------------------------------------------------
 ```java
+package test.spring;
+
+import io.disconf.client.DisConfPropertyConfigurer;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import test.spring.base.Configs;
+
+import java.util.Properties;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"classpath:disconf.xml", "classpath:app-test.xml"})
 public class ConfigTest_ {
@@ -76,5 +88,44 @@ public class ConfigTest_ {
 
 }
 ```
+-------------------------------------Configs.java--------------------------------------------------
+``` java
+package test.spring.base;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+import java.util.Arrays;
+import java.util.Map;
+
+@Component
+public class Configs {
+    @Value("${app.tags:[]}")
+    public String[] tags;
+    public String title;
+
+    public Map<String,String> userHobby;
+
+    @Value("${app.title}")
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    @Value("${app.user.hobby.*}")
+    public void setUserHobby(Map<String, String> userHobby) {
+        this.userHobby = userHobby;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Configs{");
+        sb.append("tags=").append(Arrays.toString(tags));
+        sb.append(", title='").append(title).append('\'');
+        sb.append(", userHobby=").append(userHobby);
+        sb.append('}');
+        return sb.toString();
+    }
+}
+
+```
 
