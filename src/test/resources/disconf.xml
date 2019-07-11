@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+    <!-- config center config -->
+    <bean id="disConfPropertyConfigurer" class="io.disconf.client.DisConfPropertyConfigurer">
+        <constructor-arg index="0" value="myApp"/> <!--  appName -->
+        <constructor-arg index="1">
+            <!--  所有配置项 -->
+            <array>
+                <value>settings.properties</value>
+                <value>log4j2.xml</value>
+            </array>
+        </constructor-arg>
+    </bean>
+
+</beans>
