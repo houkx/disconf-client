@@ -1,11 +1,11 @@
 # disconf-client
 简洁而强大的spring配置工具
-⋅⋅*  代码量大约只有原作者的1/10, 没有繁琐的二次扫描啥的.
-⋅⋅*  解决了几个bug, 比如debug=true时断线就不重连,莫名其名的断线等.
-⋅⋅*  支持json和 * 通配符配置
-⋅⋅*  配置更简洁, 业务代码无侵入, 只需要关注原生spring @Value注解
-⋅⋅* 配置变更后自动修改@Value注解的字段,和自动调用@Value注解的setter方法
-⋅⋅*  即使不使用disconf也能使用框架的接口主动修改配置
+*  代码量大约只有原作者的1/10, 没有繁琐的二次扫描啥的.
+*  解决了几个bug, 比如debug=true时断线就不重连,莫名其名的断线等.
+*  支持json和 * 通配符配置
+*  配置更简洁, 业务代码无侵入, 只需要关注原生spring @Value注解
+*  配置变更后自动修改@Value注解的字段,和自动调用@Value注解的setter方法
+*  即使不使用disconf也能使用框架的接口主动修改配置
 
 ``` properties
 app.title=someGame
