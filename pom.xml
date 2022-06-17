@@ -11,7 +11,7 @@
     <properties>
         <spring.version>5.1.6.RELEASE</spring.version>
         <zookeeper.version>3.4.6</zookeeper.version>
-        <fastjson.version>1.2.51</fastjson.version>
+        <fastjson.version>1.2.83</fastjson.version>
     </properties>
     <dependencies>
 
